@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="americano">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Euan | Linux Kernel Scheduler & Systems Engineer Portfolio</title>
+  <meta name="description" content="Euan's professional portfolio. Discover systems programming, Linux kernel scheduler engineering, C, and Rust development themed around coffee and Zen minimalism.">
+  <meta name="keywords" content="Euan, Linux Kernel Scheduler, Scheduler Developer, IBM Developer, C Developer, Rust Developer, Limerick Ireland, Performance Optimization, Systems Programmer">
+  <meta name="author" content="Euan">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://www.euan.ie/">
+  <meta property="og:title" content="Euan | Linux Kernel Scheduler & Systems Engineer">
+  <meta property="og:description" content="Optimizing task scheduling, load balancing, and C/Rust execution paths in the core Linux kernel.">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Stylesheet -->
+  <script type="module" crossorigin src="/assets/index-DGzSXZ9D.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Ciqdbl_N.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       📋 FLOATING NAVIGATION ("The Order Station")
+       ========================================================================== -->
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <a href="#hero" class="logo" id="navLogo">Euan<span>.☕</span></a>
+      
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links">
+        <li class="nav-item active"><a href="#hero">Home</a></li>
+        <li class="nav-item"><a href="#about">About</a></li>
+        <li class="nav-item"><a href="#projects">Projects</a></li>
+        <li class="nav-item"><a href="#skills">Skills</a></li>
+        <li class="nav-item"><a href="#blog">Blog</a></li>
+        <li class="nav-item"><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Theme Switcher -->
+      <div class="theme-switcher-container" aria-label="Select Cafe Drink Theme">
+        <button class="theme-btn active" data-theme-value="americano" title="Americano (Dark Mode)">
+          <i class="fa-solid fa-coffee"></i>
+        </button>
+        <button class="theme-btn" data-theme-value="latte" title="Latte (Warm Light Mode)">
+          <i class="fa-solid fa-mug-hot"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       ⚡ HERO SECTION ("The Daily Brew")
+       ========================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-terminal"></i> SCHED_CLASS: FAIR // KERNEL CORE
+          </div>
+          <h1 class="hero-title">
+            Optimizing CPU <br>
+            schedules down to <span>the silicon.</span>
+          </h1>
+          <p class="hero-description">
+            I am a Linux Kernel Developer at IBM, based in Limerick, Ireland. I focus on the core Linux Kernel Scheduler—tuning thread placements, load-balancing pathways, and low-level performance in C and Rust.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">View the Menu</a>
+            <a href="#contact" class="btn btn-secondary">Grab a Cup</a>
+          </div>
+        </div>
+        
+        <div class="hero-graphic-container">
+          <div class="coffee-illustration" aria-hidden="true">
+            <svg class="cup-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <!-- Steaming Effects -->
+              <path class="steam-path steam-1" d="M 45 42 Q 43 35 48 30 T 43 20" />
+              <path class="steam-path steam-2" d="M 50 42 Q 52 36 49 32 T 51 22" />
+              <path class="steam-path steam-3" d="M 55 42 Q 53 35 57 29 T 53 19" />
+              
+              <!-- Ceramic Cup -->
+              <path d="M 32 45 C 32 68, 68 68, 68 45 Z" fill="none" stroke="var(--text-primary)" stroke-width="2.5" />
+              <!-- Handle -->
+              <path d="M 68 49 C 75 49, 75 58, 68 58" fill="none" stroke="var(--text-primary)" stroke-width="2.5" />
+              <!-- Coaster Base -->
+              <line x1="25" y1="68" x2="75" y2="68" stroke="var(--text-primary)" stroke-width="2.5" stroke-linecap="round" />
+              <!-- Coffee Level In Cup -->
+              <path d="M 33.5 48 C 42 50, 58 50, 66.5 48" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ☕ ABOUT ME ("The Beans & Roast")
+       ========================================================================== -->
+  <section id="about">
+    <div class="container">
+      <span class="section-tag">// The Beans & Roast</span>
+      <h2 class="section-title">The Artisan Behind the Brew</h2>
+      
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Hello! I'm Euan, a systems programmer based in Limerick, Ireland. Currently, I work as a <strong>Linux Kernel Developer at IBM</strong>, focusing on the core Linux Kernel Scheduler (`kernel/sched/`).
+          </p>
+          <p>
+            Much like brewing the perfect shot of espresso, task scheduling on complex multi-core processors requires strict control, rigorous precision, and an appreciation for physical topology. I spend my days debugging lock-free queues, mapping scheduling domains across physical cache boundaries, and tuning load-balancing routines to maximize system throughput and minimize task wake-up latency.
+          </p>
+          <p>
+            My design and coding philosophy draws heavily from <strong>Zen principles and Japanese minimalism</strong>: eliminating unnecessary abstractions, designing clear pathways, and ensuring every single CPU instruction and memory access serves a clean, high-performance purpose.
+          </p>
+          <p>
+            When I'm not writing driver paths or reviewing scheduler patches, you can find me experimenting with pour-over coffee techniques, collecting craft beans from local roasters, or admiring clean, structured architectural layouts.
+          </p>
+        </div>
+        
+        <div class="about-roast-card">
+          <div class="roast-profile-card">
+            <h3 class="roast-card-title">
+              <i class="fa-solid fa-mug-hot" style="color: var(--accent);"></i> The Bean Profile
+            </h3>
+            <ul class="roast-spec-list">
+              <li class="roast-spec-item">
+                <span class="roast-spec-label">Origin:</span>
+                <span class="roast-spec-value">Limerick, Ireland</span>
+              </li>
+              <li class="roast-spec-item">
+                <span class="roast-spec-label">Roast Level:</span>
+                <span class="roast-spec-value">Dark Roast (Kernel & Scheduler Specialist)</span>
+              </li>
+              <li class="roast-spec-item">
+                <span class="roast-spec-label">Varieties:</span>
+                <span class="roast-spec-value">C, Rust, kernel/sched/, eBPF</span>
+              </li>
+              <li class="roast-spec-item">
+                <span class="roast-spec-label">Process:</span>
+                <span class="roast-spec-value">Load balancing, cache optimization, lock-free concurrency</span>
+              </li>
+              <li class="roast-spec-item">
+                <span class="roast-spec-label">Notes:</span>
+                <span class="roast-spec-value">IBM Engineer, pour-over enthusiast, cycle counter</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       🏷️ PROJECTS SHOWCASE ("Selected Blends")
+       ========================================================================== -->
+  <section id="projects">
+    <div class="container">
+      <span class="section-tag">// Selected Blends</span>
+      <h2 class="section-title">Artisanal Code Creations</h2>
+      
+      <div class="projects-filter-bar" role="group" aria-label="Filter Projects by Roast Depth">
+        <button class="filter-btn active" data-filter="all">All Blends</button>
+        <button class="filter-btn" data-filter="light">Light Roast</button>
+        <button class="filter-btn" data-filter="medium">Medium Roast</button>
+        <button class="filter-btn" data-filter="dark">Dark Roast</button>
+      </div>
+
+      <div class="projects-grid">
+        
+        <!-- Project 1: Dark Roast -->
+        <article class="project-card" data-roast="dark">
+          <div class="project-card-header">
+            <span class="roast-badge roast-dark">Dark Roast</span>
+            <i class="fa-solid fa-microchip project-icon"></i>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">k_sched_lat</h3>
+            <p class="project-desc">
+              A high-precision kernel latency monitoring module designed for tracking task wake-up and runqueue latencies across multi-socket CPU topologies.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">C</span>
+              <span class="tech-tag">Linux Kernel</span>
+              <span class="tech-tag">eBPF</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <a href="https://github.com" class="project-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fa-solid fa-bolt"></i> Benchmarks</a>
+          </div>
+        </article>
+
+        <!-- Project 2: Dark Roast -->
+        <article class="project-card" data-roast="dark">
+          <div class="project-card-header">
+            <span class="roast-badge roast-dark">Dark Roast</span>
+            <i class="fa-solid fa-leaf project-icon"></i>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">zen-alloc</h3>
+            <p class="project-desc">
+              A high-performance, lock-free custom memory allocator written in Rust, leveraging zero-cost abstractions and local caching strategies.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Rust</span>
+              <span class="tech-tag">Concurrency</span>
+              <span class="tech-tag">Memory Management</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <a href="https://github.com" class="project-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Docs</a>
+          </div>
+        </article>
+
+        <!-- Project 3: Medium Roast -->
+        <article class="project-card" data-roast="medium">
+          <div class="project-card-header">
+            <span class="roast-badge roast-medium">Medium Roast</span>
+            <i class="fa-solid fa-gauge-high project-icon"></i>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">sched-visual-pipe</h3>
+            <p class="project-desc">
+              An interactive monospaced visualization of CPU scheduler load-balancing migrations and runqueues, displaying active cores and task domains.
+            </p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">WebAssembly</span>
+              <span class="tech-tag">CSS Grid</span>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <a href="https://github.com" class="project-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       🌿 SKILLS & INGREDIENTS ("Flavour Profiles")
+       ========================================================================== -->
+  <section id="skills">
+    <div class="container">
+      <span class="section-tag">// Flavour Profiles</span>
+      <h2 class="section-title">Ingredients & Technologies</h2>
+      
+      <div class="skills-grid">
+        
+        <!-- Low-Level Extraction -->
+        <div class="skills-category-card">
+          <div class="skills-card-header">
+            <i class="fa-solid fa-terminal"></i>
+            <h3 class="skills-category-title">Low-Level Extraction</h3>
+          </div>
+          <ul class="skills-list">
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">C Programming</span>
+                <span class="skill-level">95%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="95%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Kernel Scheduler (kernel/sched/)</span>
+                <span class="skill-level">90%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="90%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Systems Rust</span>
+                <span class="skill-level">70%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="70%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Systems & Architecture -->
+        <div class="skills-category-card">
+          <div class="skills-card-header">
+            <i class="fa-solid fa-microchip"></i>
+            <h3 class="skills-category-title">Systems & Topology</h3>
+          </div>
+          <ul class="skills-list">
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">CPU Load Balancing & NUMA</span>
+                <span class="skill-level">95%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="95%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Performance Optimization / Benchmarks</span>
+                <span class="skill-level">90%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="90%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">eBPF & Dynamic Kernel Tracing</span>
+                <span class="skill-level">80%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="80%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tools & Infrastructure -->
+        <div class="skills-category-card">
+          <div class="skills-card-header">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h3 class="skills-category-title">Tools & Infrastructure</h3>
+          </div>
+          <ul class="skills-list">
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Git & Kernel Mailing Lists</span>
+                <span class="skill-level">90%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="90%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">GDB, Crash Dump, perf tools</span>
+                <span class="skill-level">85%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="85%"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">QEMU, KVM virtualizers</span>
+                <span class="skill-level">80%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-bar" data-level="80%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ✍️ BREWING NOTES / JOURNAL ("Blog")
+       ========================================================================== -->
+  <section id="blog">
+    <div class="container">
+      <span class="section-tag">// Brewing Notes</span>
+      <h2 class="section-title">The Journal & Writing</h2>
+      
+      <div class="blog-grid">
+        
+        <!-- Post 1 -->
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span>DATE: 2026-05-24</span>
+            <span>⏱️ 6 MIN READ</span>
+          </div>
+          <h3 class="blog-title"><a href="#">Decaffeinating the Scheduler: Task Latency Audits</a></h3>
+          <p class="blog-excerpt">
+            Investigating unexpected task migration latency across CPU sockets, tracing load-balancing routines, and analyzing cache penalties in nested domains.
+          </p>
+          <a href="#" class="blog-read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span>DATE: 2026-04-18</span>
+            <span>⏱️ 5 MIN READ</span>
+          </div>
+          <h3 class="blog-title"><a href="#">The Zen of CPU Topology: Scheduling Domains</a></h3>
+          <p class="blog-excerpt">
+            How the Linux scheduler models physical hardware structures, maps NUMA clusters, and makes cache-aware scheduling decisions.
+          </p>
+          <a href="#" class="blog-read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card">
+          <div class="blog-meta">
+            <span>DATE: 2026-03-02</span>
+            <span>⏱️ 8 MIN READ</span>
+          </div>
+          <h3 class="blog-title"><a href="#">Brewing Rust: Low-Level Memory Safe Drivers</a></h3>
+          <p class="blog-excerpt">
+            An exploration of writing safe low-level interfaces for hardware subsystems, testing safety models directly against traditional POSIX C APIs.
+          </p>
+          <a href="#" class="blog-read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       📬 CONTACT ("Grab a Cup")
+       ========================================================================== -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-tag">// Grab a Cup</span>
+      <h2 class="section-title">Let's Coffee Talk</h2>
+      
+      <div class="contact-grid">
+        
+        <div class="contact-details">
+          <p class="contact-description">
+            Have a low-level systems project in mind, want to discuss CPU scheduling topology, talk performance micro-optimizations, or simply wish to share your favorite pour-over recipe? I'm always open to discussing new opportunities and interesting ideas.
+          </p>
+          
+          <ul class="contact-info-list">
+            <li class="contact-info-item">
+              <div class="contact-icon-wrapper" aria-hidden="true">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <div class="contact-text-label">Email Me</div>
+                <div class="contact-text-value">hello@euan.ie</div>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <div class="contact-icon-wrapper" aria-hidden="true">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <div class="contact-text-label">Location</div>
+                <div class="contact-text-value">Limerick, Ireland</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="receipt-wrapper">
+          <div class="receipt" id="receiptCard">
+            <!-- Paid stamp overlay -->
+            <div class="stamp-overlay" id="stampOverlay">Sent! ☕</div>
+            
+            <div class="receipt-header">
+              <div class="receipt-cafe-name">CAFE EUAN</div>
+              <div class="receipt-sub">PORTFOLIO CONTACT STATION</div>
+              <div class="receipt-meta" id="receiptTimestamp">DATE: --/--/---- TIME: --:--:--</div>
+            </div>
+            
+            <form id="contactForm" novalidate>
+              <div class="receipt-form-group">
+                <label for="clientName" class="receipt-label">01/ CUSTOMER NAME</label>
+                <input type="text" id="clientName" class="receipt-input" placeholder="Enter your name..." required>
+              </div>
+              
+              <div class="receipt-form-group">
+                <label for="clientEmail" class="receipt-label">02/ RETURN EMAIL</label>
+                <input type="email" id="clientEmail" class="receipt-input" placeholder="name@domain.com" required>
+              </div>
+              
+              <div class="receipt-form-group">
+                <label for="clientMessage" class="receipt-label">03/ ORDER NOTES (MESSAGE)</label>
+                <textarea id="clientMessage" class="receipt-textarea" placeholder="Describe your project or message..." required></textarea>
+              </div>
+              
+              <div class="receipt-divider"></div>
+              
+              <div class="receipt-total-row">
+                <span>TOTAL COST</span>
+                <span>$0.00 (FREE)</span>
+              </div>
+              
+              <button type="submit" class="receipt-submit-btn">
+                <span id="submitText">PLACE ORDER (SEND)</span>
+              </button>
+            </form>
+            
+            <div class="receipt-footer-text">
+              * THANK YOU FOR STOPPING BY *
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       🍵 FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Euan<span>.☕</span></div>
+      
+      <div class="footer-socials">
+        <a href="https://github.com" class="footer-social-link" aria-label="GitHub Profiles" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" class="footer-social-link" aria-label="LinkedIn Profiles" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+      
+      <p class="footer-copy">
+        © <span id="year">2026</span> EUAN.IE. HAND-BREWED WITH Semantics & Precision.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script tags -->
+  <script>
+    // Update footer year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
