@@ -1,6 +1,5 @@
 # 📦 Node / Package files
 node_modules/
-package-lock.json
 
 # 🏗️ Build & Cache outputs
 dist/
@@ -11,3 +10,4 @@ dist/
 .DS_Store
 Thumbs.db
 *.log
+build_fail.txt
