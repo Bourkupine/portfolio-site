@@ -1,0 +1,13 @@
+# 📦 Node / Package files
+node_modules/
+package-lock.json
+
+# 🏗️ Build & Cache outputs
+dist/
+.vite/
+.cache/
+
+# 🖥️ System files
+.DS_Store
+Thumbs.db
+*.log

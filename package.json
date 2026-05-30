@@ -1,0 +1,23 @@
+{
+  "name": "euan-portfolio",
+  "version": "1.0.0",
+  "description": "Coffee and Zen themed professional portfolio website for Euan.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --port 3000 --open",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "portfolio",
+    "coffee",
+    "zen",
+    "minimalist",
+    "vanilla-js"
+  ],
+  "author": "Euan",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.2.11"
+  }
+}

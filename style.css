@@ -1,0 +1,1174 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ==========================================================================
+   ☕ DESIGN SYSTEM & COLOR THEMES (Coffee & Zen)
+   ========================================================================== */
+
+:root {
+  /* Default: Americano Theme (Dark Mode) */
+  --bg-primary: #120c0a;
+  --bg-secondary: #1a120e;
+  --bg-tertiary: #271b16;
+  --text-primary: #f5efe6;
+  --text-secondary: #bbaea0;
+  --text-tertiary: #8a7a6c;
+  --accent: #8dae86; /* Glowing Matcha Green Accent */
+  --accent-rgb: 141, 174, 134;
+  --accent-hover: #73946d;
+  --matcha: #8dae86;
+  --border-color: rgba(245, 239, 230, 0.08);
+  --border-glow: rgba(141, 174, 134, 0.15);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --receipt-bg: #eae3d5;
+  --receipt-text: #2d1e18;
+  --transition-speed: 0.4s;
+  --shoji-line: 1px solid var(--border-color);
+}
+
+[data-theme="latte"] {
+  /* Latte Theme (Warm Light Brown Mode) */
+  --bg-primary: #e3d3be; /* Rich warm latte-brown */
+  --bg-secondary: #d7c7b2; /* Muted warm cappuccino card */
+  --bg-tertiary: #c2b29d; /* Biscuit border */
+  --text-primary: #2d1e18; /* Deep espresso brown text */
+  --text-secondary: #5e483e; /* Creamy chocolate brown text */
+  --text-tertiary: #8b756b;
+  --accent: #3d543b; /* Deep Ceremonial Matcha Green Accent */
+  --accent-rgb: 61, 84, 59;
+  --accent-hover: #2f422e;
+  --matcha: #3d543b;
+  --border-color: rgba(45, 30, 24, 0.12);
+  --border-glow: rgba(61, 84, 59, 0.15);
+  --shadow: rgba(45, 30, 24, 0.08);
+  --receipt-bg: #eae3d5;
+  --receipt-text: #2d1e18;
+  --shoji-line: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   🌿 GENERAL STYLES & RESET
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Custom Scrollbar styled like coffee drip */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 6rem 0;
+  border-bottom: var(--shoji-line);
+  position: relative;
+}
+
+/* ==========================================================================
+   📋 FLOATING NAVIGATION ("The Order Station")
+   ========================================================================== */
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(var(--accent-rgb), 0.01);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: var(--shoji-line);
+  z-index: 1000;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-item a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.5rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--accent);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-item a:hover,
+.nav-item.active a {
+  color: var(--text-primary);
+}
+
+.nav-item a:hover::after,
+.nav-item.active a::after {
+  width: 100%;
+}
+
+/* Theme Switcher Bar */
+.theme-switcher-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  padding: 0.3rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.theme-btn:hover {
+  color: var(--text-primary);
+}
+
+.theme-btn.active {
+  background: var(--bg-tertiary);
+  color: var(--accent);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   ⚡ HERO SECTION ("The Daily Brew")
+   ========================================================================== */
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(var(--matcha-rgb), 0.1);
+  border: 1px solid rgba(var(--matcha-rgb), 0.2);
+  color: var(--matcha);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title span {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 550px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff !important;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.25);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* CSS-Animated Coffee Cup Graphic */
+.hero-graphic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-graphic-container::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+  transition: background var(--transition-speed) ease;
+}
+
+.coffee-illustration {
+  width: 250px;
+  height: 250px;
+  position: relative;
+}
+
+/* Zen Minimal Coffee Cup SVG */
+.cup-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.steam-path {
+  fill: none;
+  stroke: var(--text-tertiary);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+  transform-origin: bottom center;
+}
+
+.steam-1 {
+  animation: steamRise 3.5s ease-in-out infinite;
+}
+
+.steam-2 {
+  animation: steamRise 4s ease-in-out infinite 1.2s;
+}
+
+.steam-3 {
+  animation: steamRise 3.8s ease-in-out infinite 0.6s;
+}
+
+@keyframes steamRise {
+  0% {
+    stroke-dashoffset: 20;
+    opacity: 0;
+    transform: translateY(10px) scaleX(0.8);
+  }
+  30% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.3;
+    transform: translateY(-15px) scaleX(1.1) rotate(5deg);
+  }
+  100% {
+    stroke-dashoffset: -40;
+    opacity: 0;
+    transform: translateY(-35px) scaleX(0.7) rotate(-5deg);
+  }
+}
+
+/* ==========================================================================
+   ☕ ABOUT ME ("The Beans & Roast")
+   ========================================================================== */
+
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+.about-text p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-text pstrong {
+  color: var(--text-primary);
+}
+
+.roast-profile-card {
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  padding: 2.5rem;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.roast-profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.roast-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.roast-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.roast-spec-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.roast-spec-label {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.roast-spec-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   🏷️ PROJECTS SHOWCASE ("Selected Blends")
+   ========================================================================== */
+
+.projects-filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  color: var(--text-secondary);
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 5px 20px var(--shadow);
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 35px var(--shadow), 0 0 20px var(--border-glow);
+}
+
+.project-card-header {
+  padding: 1.5rem 1.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.roast-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.roast-light {
+  background: rgba(224, 184, 92, 0.15);
+  color: #e0b85c;
+  border: 1px solid rgba(224, 184, 92, 0.25);
+}
+
+.roast-medium {
+  background: rgba(197, 126, 75, 0.15);
+  color: #c57e4b;
+  border: 1px solid rgba(197, 126, 75, 0.25);
+}
+
+.roast-dark {
+  background: rgba(139, 90, 68, 0.15);
+  color: #c0917e;
+  border: 1px solid rgba(139, 90, 68, 0.25);
+}
+
+.project-icon {
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+}
+
+.project-card-body {
+  padding: 1rem 1.5rem;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  background: var(--bg-tertiary);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.project-card-footer {
+  padding: 1rem 1.5rem 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-link:hover {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   🌿 SKILLS & INGREDIENTS ("Flavour Profiles")
+   ========================================================================== */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.skills-category-card {
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px var(--shadow);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skills-category-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+.skills-card-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--accent);
+}
+
+.skills-card-header i {
+  font-size: 1.5rem;
+}
+
+.skills-category-title {
+  font-size: 1.35rem;
+  color: var(--text-primary);
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.skill-level {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-tertiary);
+}
+
+.skill-progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  width: 0; /* Animated dynamically with JS */
+  transition: width 1.5s cubic-bezier(0.1, 0.76, 0.55, 0.94);
+}
+
+/* ==========================================================================
+   ✍️ BLOG / JOURNAL ("Daily Specials")
+   ========================================================================== */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.blog-card {
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 5px 20px var(--shadow);
+  padding: 2rem;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.blog-title {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.blog-title a:hover {
+  color: var(--accent);
+}
+
+.blog-excerpt {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.blog-read-more {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ==========================================================================
+   📬 CONTACT ("Grab a Cup")
+   ========================================================================== */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-description {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  background: var(--bg-secondary);
+  border: var(--shoji-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.contact-text-label {
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+}
+
+.contact-text-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* receipt styled contact form */
+.receipt-wrapper {
+  perspective: 1000px;
+  position: relative;
+}
+
+.receipt {
+  background: var(--receipt-bg);
+  color: var(--receipt-text);
+  padding: 3rem 2.5rem;
+  border-radius: 1px;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 8px dashed var(--bg-primary); /* Classic tear border */
+  transition: transform 0.6s ease;
+}
+
+.receipt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.03), transparent);
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 2px dashed rgba(0,0,0,0.15);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.receipt-cafe-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.receipt-sub {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.receipt-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  opacity: 0.6;
+}
+
+.receipt-form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.receipt-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
+  opacity: 0.8;
+}
+
+.receipt-input,
+.receipt-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  padding: 0.5rem 0;
+  color: var(--receipt-text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.receipt-input:focus,
+.receipt-textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.receipt-textarea {
+  resize: none;
+  height: 80px;
+}
+
+.receipt-divider {
+  border-top: 2px dashed rgba(0,0,0,0.15);
+  margin: 2rem 0 1.5rem;
+}
+
+.receipt-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.receipt-submit-btn {
+  width: 100%;
+  background: var(--receipt-text);
+  color: var(--receipt-bg);
+  border: none;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.85rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.receipt-submit-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.receipt-footer-text {
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 1.5rem;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+
+/* Receipt printed / stamped animations */
+.receipt.submitted {
+  animation: receiptFold 0.8s forwards ease-in-out;
+}
+
+.stamp-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg) scale(3);
+  opacity: 0;
+  pointer-events: none;
+  border: 4px double #c94a49;
+  color: #c94a49;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(235, 238, 235, 0.9);
+}
+
+.receipt.submitted .stamp-overlay {
+  opacity: 0.85;
+  transform: translate(-50%, -50%) rotate(-12deg) scale(1);
+}
+
+@keyframes receiptFold {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+  100% { transform: translateY(0); }
+}
+
+/* ==========================================================================
+   🍵 FOOTER
+   ========================================================================== */
+
+footer {
+  background: var(--bg-secondary);
+  border-top: var(--shoji-line);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.footer-logo span {
+  color: var(--accent);
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social-link {
+  width: 36px;
+  height: 36px;
+  background: var(--bg-primary);
+  border: var(--shoji-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   📱 RESPONSIVE DESIGN MEDIA QUERIES
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .hero-badge {
+    justify-content: center;
+  }
+  
+  .hero-description {
+    margin: 0 auto 2.5rem;
+  }
+  
+  .hero-ctas {
+    justify-content: center;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .nav-links {
+    display: none; /* Mobile menu toggling needed */
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-bar.active .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: var(--shoji-line);
+    padding: 2rem 0;
+    gap: 1.5rem;
+    box-shadow: 0 10px 20px var(--shadow);
+  }
+  
+  .theme-switcher-container {
+    margin-left: auto;
+    margin-right: 1.5rem;
+  }
+}
