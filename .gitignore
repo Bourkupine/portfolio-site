@@ -11,3 +11,4 @@ dist/
 Thumbs.db
 *.log
 build_fail.txt
+plan.md
